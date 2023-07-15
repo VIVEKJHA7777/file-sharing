@@ -21,11 +21,13 @@ app.use(cors(corsOptions));
 
 //template engine
 app.set('view engine','ejs');
+app.set('views', __dirname + '/views')
  
 //Routes
-app.use('/api/files',require('./routes/files'))
+app.use('/',require('./routes/home'));
+app.use('/api/files',require('./routes/files'));
 app.use('/files',require('./routes/show.js'));
-app.use('/files/download',require('./routes/download'))
+app.use('/files/download',require('./routes/download'));
 
 app.listen(PORT,()=>{
     console.log(`Listening on port ${PORT}`);
